@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who We Are — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    body { padding-top: 0; }
+    .timeline { position:relative; padding:2rem 0; }
+    .timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(to bottom, var(--purple), var(--gold)); transform:translateX(-50%); }
+    .tl-item { display:grid; grid-template-columns:1fr 64px 1fr; gap:1.5rem; margin-bottom:2.5rem; align-items:start; }
+    .tl-item:nth-child(odd)  .tl-text { grid-column:1; text-align:right; }
+    .tl-item:nth-child(odd)  .tl-dot   { grid-column:2; }
+    .tl-item:nth-child(odd)  .tl-empty { grid-column:3; }
+    .tl-item:nth-child(even) .tl-empty { grid-column:1; }
+    .tl-item:nth-child(even) .tl-dot   { grid-column:2; }
+    .tl-item:nth-child(even) .tl-text  { grid-column:3; }
+    .tl-dot {
+      width:64px; height:64px; border-radius:50%;
+      background:var(--purple); border:3px solid var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-body); font-size:0.72rem; font-weight:800;
+      color:var(--gold-light); z-index:2; position:relative;
+      text-align:center; line-height:1.2;
+    }
+    .tl-text h4 { font-family:var(--font-display); font-size:1rem; color:var(--white); margin-bottom:0.4rem; }
+    .tl-text p  { font-size:0.85rem; color:rgba(255,255,255,0.6); }
+    @media(max-width:700px){
+      .timeline::before { left:32px; }
+      .tl-item { grid-template-columns:64px 1fr; }
+      .tl-item:nth-child(odd)  .tl-text,
+      .tl-item:nth-child(even) .tl-text  { grid-column:2; text-align:left; }
+      .tl-item .tl-dot { grid-column:1; }
+      .tl-item .tl-empty { display:none; }
+    }
+
+    .committee-card {
+      background:var(--white); border:1px solid var(--border);
+      border-radius:var(--radius-lg); padding:1.5rem;
+      border-top:4px solid var(--purple);
+      transition:box-shadow var(--transition);
+    }
+    .committee-card:hover { box-shadow:var(--shadow-md); }
+    .committee-card h4 { color:var(--purple); margin-bottom:0.6rem; }
+    .committee-card p  { font-size:0.9rem; }
+
+    .function-tag {
+      display:inline-block; padding:5px 14px;
+      background:var(--purple-pale); color:var(--purple);
+      border-radius:20px; font-size:0.78rem; font-weight:600;
+      border:1px solid rgba(92,45,145,0.2);
+      margin:4px 4px 0 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__media">
+    <!-- REPLACE with your own JLOS image -->
+    <img src="IMG_4500.jpg" alt="Who We Are">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="about-who-we-are.html">About Us</a>
+      <span class="sep">/</span>
+      <span class="current">Who We Are</span>
+    </nav>
+    <h1>Who We Are</h1>
+  </div>
+</section>
+
+<!-- WHAT IS JLOS -->
+<section class="section section--white">
+  <div class="container">
+    <div class="grid-2">
+      <div class="reveal">
+        <span class="section-eyebrow">About JLOS</span>
+        <h2 class="section-heading">What is the Justice Law and Order Sector (JLOS)?</h2>
+        <div class="purple-bar"></div>
+        <p>The Justice Law and Order Sector (JLOS) is a sector-wide approach that brings together <strong>18 institutions</strong> with closely linked mandates responsible for administering justice, maintaining law and order and promoting the observance of human rights.</p>
+        <p class="mt-2">JLOS is a major player in the promotion of the rule of law in Uganda. Through a sector-wide approach (SWAp), the sector brings together state and non-state actors who play complementary roles in planning, budgeting, programme implementation, monitoring and evaluation.</p>
+        <p class="mt-2">It is an innovative approach of the Government of Uganda built around the <strong>3 Cs</strong> — Communication, Coordination and Cooperation — among several stakeholders.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div style="background:linear-gradient(135deg,var(--purple),var(--purple-dark));border-radius:var(--radius-lg);padding:2.5rem;color:var(--white)">
+          <h3 style="color:var(--white);margin-bottom:1.5rem;font-size:1.3rem">Our Purpose</h3>
+          <div style="margin-bottom:1.5rem">
+            <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.5rem">Mission</div>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.95rem">To improve the safety of the person, security of property, and access to justice for inclusive growth with the overall goal to "promote the rule of law."</p>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:1.5rem">
+            <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.5rem">Vision</div>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.95rem">To ensure that people in Uganda live in a safe and just society.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+          <div style="background:var(--gold-pale);border-radius:var(--radius-lg);padding:1.25rem;text-align:center;border:1px solid rgba(201,149,42,0.2)">
+            <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--gold-dark)">18</div>
+            <div style="font-size:0.75rem;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.08em">Member Institutions</div>
+          </div>
+          <div style="background:var(--purple-pale);border-radius:var(--radius-lg);padding:1.25rem;text-align:center;border:1px solid rgba(92,45,145,0.15)">
+            <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--purple)">1999</div>
+            <div style="font-size:0.75rem;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.08em">Year Founded</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORICAL ROAD MAP -->
+<section class="section section--purple">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow text-gold reveal">Our Journey</span>
+      <h2 class="text-white reveal reveal-delay-1">JLOS Historical Road Map</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2" style="background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-text">
+          <h4>Launch of JLOS</h4>
+          <p>Officially launched, bringing together 10 public institutions to jointly improve access to justice. The Chain-Linked Initiative is introduced.</p>
+        </div>
+        <div class="tl-dot">1999</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">2001</div>
+        <div class="tl-text">
+          <h4>Strategic Investment Plan I Begins</h4>
+          <p>SIP I (2001–2005/06) launched. Reform efforts prioritize criminal justice, commercial justice, law reform and efficiency.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-text">
+          <h4>SIP II &amp; UHRC Integration</h4>
+          <p>SIP II (2006/07–2012/13) launched. JLOS membership expands from 10 to 17 institutions. UHRC officially integrated into JLOS.</p>
+        </div>
+        <div class="tl-dot">2006</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">2011</div>
+        <div class="tl-text">
+          <h4>Small Claims Procedure (SCP)</h4>
+          <p>SCP pilot begins in courts across the country, offering affordable speedy justice for claims up to UGX 10 million without a lawyer.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-text">
+          <h4>Strategic Investment Plan III</h4>
+          <p>SIP III (2012/13–2016/17) focuses on public confidence, human rights protection, expanded access and reducing case backlog.</p>
+        </div>
+        <div class="tl-dot">2012</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">2015</div>
+        <div class="tl-text">
+          <h4>Major Sector Advancements</h4>
+          <p>SCP reaches 69% disposal rate. 84 districts covered (75% national coverage). Plea bargaining expanded. Community policing strengthened.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-text">
+          <h4>Digital Transformation Accelerates</h4>
+          <p>Wide-scale digitisation across Judiciary, Police, Prisons and Immigration. Improved system integration enhances data sharing.</p>
+        </div>
+        <div class="tl-dot">2021</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">2024</div>
+        <div class="tl-text">
+          <h4>People-Centred Transformational Justice</h4>
+          <p>JLOS emphasises people-centred justice aligned to national transformation goals. Enhanced inter-agency collaboration boosts reliability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW JLOS FUNCTIONS -->
+<section class="section section--white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow reveal">Structure</span>
+      <h2 class="section-heading reveal reveal-delay-1">How Does JLOS Function?</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2"></div>
+      <p class="mt-2 reveal" style="max-width:660px;margin-left:auto;margin-right:auto">The sector is centered on joint planning through committees and working groups at national and sub-national levels. The Secretariat is only a coordination unit — we are all JLOS.</p>
+    </div>
+
+    <h3 class="reveal" style="color:var(--purple);margin-bottom:1.5rem">National Level Committees</h3>
+    <div class="grid-3 reveal">
+      <div class="committee-card">
+        <h4>Leadership Committee</h4>
+        <p>Comprised of all heads of institutions, ultimately accountable for JLOS services. Responsible for political leadership, guidance and articulating the JLOS Vision.</p>
+      </div>
+      <div class="committee-card">
+        <h4>Steering Committee</h4>
+        <p>Responsible for policy formulation, coordination, fundraising, external accountability, and quality assurance of JLOS results to the people of Uganda.</p>
+      </div>
+      <div class="committee-card">
+        <h4>Technical Committee</h4>
+        <p>Comprises technical personnel from JLOS institutions headed by departmental heads. Primarily operates through specialist working groups.</p>
+      </div>
+    </div>
+
+    <h3 class="reveal mt-6" style="color:var(--purple);margin-bottom:1rem">Working Groups</h3>
+    <p class="reveal" style="margin-bottom:1.5rem">Working groups serve as extensions of the Technical Committee, providing in-depth consideration of reform areas. They report to the Technical Committee for decisions on resource allocation.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem" class="reveal">
+      <span class="function-tag">Access to Justice — Civil</span>
+      <span class="function-tag">Land Justice</span>
+      <span class="function-tag">Access to Justice — Criminal</span>
+      <span class="function-tag">Children and Family Justice</span>
+      <span class="function-tag">Human Rights &amp; Accountability</span>
+      <span class="function-tag">Transitional Justice</span>
+      <span class="function-tag">Budget Working Group</span>
+      <span class="function-tag">ICT Working Group</span>
+    </div>
+
+    <h3 class="reveal mt-6" style="color:var(--purple);margin-bottom:1rem">Sub-national Structures</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem" class="reveal">
+      <span class="function-tag">Regional Chain-linked Committees (RCCs)</span>
+      <span class="function-tag">District Chain-Linked Committees (DCCs)</span>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>

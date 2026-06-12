@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Institutions — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    body { padding-top: var(--nav-h); }
+    .inst-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .inst-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--radius-lg); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; transition: box-shadow var(--transition), transform var(--transition); cursor: pointer; }
+    .inst-card:hover { box-shadow: 0 12px 40px rgba(14,30,53,0.1); transform: translateY(-3px); }
+    .inst-card__header { display: flex; align-items: flex-start; gap: 1rem; }
+    .inst-card__icon { width: 46px; height: 46px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .cat-justice .inst-card__icon  { background: #E6F1FB; }
+    .cat-security .inst-card__icon { background: #FAECE7; }
+    .cat-rights .inst-card__icon   { background: #EAF3DE; }
+    .cat-reg .inst-card__icon      { background: #FAEEDA; }
+    .cat-social .inst-card__icon   { background: #EEEDFE; }
+    .inst-card__abbr { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    .cat-justice .inst-card__abbr  { color: #185FA5; }
+    .cat-security .inst-card__abbr { color: #993C1D; }
+    .cat-rights .inst-card__abbr   { color: #3B6D11; }
+    .cat-reg .inst-card__abbr      { color: #854F0B; }
+    .cat-social .inst-card__abbr   { color: #534AB7; }
+    .inst-card__name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--navy); line-height: 1.3; }
+    .inst-card__cat { font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; width: fit-content; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .cat-justice .inst-card__cat  { background: #E6F1FB; color: #185FA5; }
+    .cat-security .inst-card__cat { background: #FAECE7; color: #993C1D; }
+    .cat-rights .inst-card__cat   { background: #EAF3DE; color: #3B6D11; }
+    .cat-reg .inst-card__cat      { background: #FAEEDA; color: #854F0B; }
+    .cat-social .inst-card__cat   { background: #EEEDFE; color: #534AB7; }
+    .inst-card__desc { font-size: 0.86rem; line-height: 1.65; color: var(--ink-soft); display: none; }
+    .inst-card.open .inst-card__desc { display: block; }
+    .inst-card__footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--cream-dark); }
+    .inst-card__link { font-size: 0.75rem; color: var(--gold); text-decoration: none; }
+    .inst-card__link:hover { color: var(--navy); }
+    .toggle-btn { background: none; border: none; cursor: pointer; font-size: 0.75rem; color: var(--ink-muted); padding: 0; font-family: var(--font-body); display:flex;align-items:center;gap:4px; }
+    .toggle-btn .chev { display:inline-block; transition: transform 0.25s; }
+    .inst-card.open .chev { transform: rotate(180deg); }
+    .count-tag { background: var(--navy); color: var(--white); font-size: 0.7rem; padding: 4px 12px; border-radius: 40px; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero__media">
+    <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80&auto=format" alt="Institutions">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span>Member Institutions</span>
+    </nav>
+    <span class="eyebrow">JLOS Network</span>
+    <h1>Member <em class="display-italic">Institutions</em></h1>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem">
+      <div>
+        <span class="eyebrow">Directory</span>
+        <h2 class="section-title">All <span id="displayCount">18</span> <em class="display-italic">Institutions</em></h2>
+        <div class="gold-line"></div>
+        <p>Click any card to read a full description. Click the website link to visit the institution directly.</p>
+      </div>
+    </div>
+
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-tab active" data-cat="all">All <span class="count-tag">18</span></button>
+      <button class="filter-tab" data-cat="justice">Justice</button>
+      <button class="filter-tab" data-cat="security">Security &amp; Order</button>
+      <button class="filter-tab" data-cat="rights">Human Rights</button>
+      <button class="filter-tab" data-cat="reg">Registration</button>
+      <button class="filter-tab" data-cat="social">Social</button>
+    </div>
+
+    <div class="inst-grid" id="instGrid"></div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container text-center">
+    <span class="eyebrow reveal">Coordination</span>
+    <h2 class="text-white reveal reveal-delay-1">How JLOS <em class="display-italic">Works Together</em></h2>
+    <div class="gold-line gold-line--center reveal reveal-delay-2"></div>
+    <p class="mt-2" style="max-width:600px;margin-left:auto;margin-right:auto;color:rgba(255,255,255,0.7);margin-bottom:2.5rem">Each institution retains its mandate but contributes to shared sector outcomes through joint planning, budgeting, and reporting under the JLOS framework.</p>
+    <div class="grid-3 reveal">
+      <div class="stat-card"><span class="stat-card__num">4</span><p class="stat-card__label">Strategic Plans Completed</p></div>
+      <div class="stat-card"><span class="stat-card__num">25+</span><p class="stat-card__label">Years of Coordination</p></div>
+      <div class="stat-card"><span class="stat-card__num">146</span><p class="stat-card__label">Districts with JLOS Services</p></div>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+<script>
+const institutions = [
+  { name:"Ministry of Justice and Constitutional Affairs", abbr:"MOJCA", cat:"justice", icon:"⚖️", url:"http://www.justice.go.ug", catLabel:"Justice", desc:"Responsible for upholding the rule of law, driving forward the legal and justice system, and safeguarding the Constitution. Coordinates legal policy, drafts legislation, provides legal advice to Government, and promotes adherence to rule of law and natural justice." },
+  { name:"The Judiciary", abbr:"Judiciary", cat:"justice", icon:"🏛️", url:"http://www.judiciary.go.ug", catLabel:"Justice", desc:"Comprises the Supreme Court, Court of Appeal, High Court, and Subordinate Courts including Qadhis Courts. Administers justice by resolving disputes, interpreting the Constitution, and upholding democratic principles and human rights." },
+  { name:"Office of the Director of Public Prosecutions", abbr:"ODPP", cat:"justice", icon:"📋", url:"http://www.dpp.go.ug", catLabel:"Justice", desc:"Provides legal advice on investigation and prosecution of criminal cases. Coordinates and manages prosecutions by examining criminal cases before registration in court and ensuring quality prosecution throughout proceedings." },
+  { name:"Uganda Law Reform Commission", abbr:"ULRC", cat:"justice", icon:"📚", url:"http://www.ulrc.go.ug", catLabel:"Justice", desc:"Continuously studies and reviews Acts and other laws of Uganda with a view to making recommendations for their systematic improvement, development, modernisation through reform and revision." },
+  { name:"Judicial Service Commission", abbr:"JSC", cat:"justice", icon:"👨‍⚖️", url:"http://www.jsc.go.ug", catLabel:"Justice", desc:"Recruits competent Judicial Officers, carries out civic education targeting the general public, conducts research into the justice system, and supervises, monitors and inspects justice dispensation in Uganda." },
+  { name:"Tax Appeals Tribunal", abbr:"TAT", cat:"justice", icon:"🧾", url:"http://www.tat.go.ug", catLabel:"Justice", desc:"Provides an independent forum for taxpayers to appeal against tax assessments and decisions made by the Uganda Revenue Authority, ensuring fair resolution of tax disputes." },
+  { name:"Law Development Centre", abbr:"LDC", cat:"justice", icon:"🎓", url:"http://www.ldc.ac.ug", catLabel:"Justice", desc:"Provides legal training and continuing professional education in Uganda. Offers the Bar Course for admission to the legal profession and continuing legal education for practising lawyers." },
+  { name:"Centre for Arbitration and Dispute Resolution", abbr:"CADER", cat:"justice", icon:"🤝", url:"http://www.cader.go.ug", catLabel:"Justice", desc:"Promotes and administers alternative dispute resolution including arbitration, mediation, and conciliation as cost-effective alternatives to court litigation in Uganda." },
+  { name:"Uganda Police Force", abbr:"UPF", cat:"security", icon:"🛡️", url:"http://www.upf.go.ug", catLabel:"Security & Order", desc:"Secures life and property in partnership with the public. Responsible for preventing and detecting crime, maintaining public safety and order, and upholding the rights and freedoms of Ugandan citizens." },
+  { name:"Uganda Prisons Service", abbr:"UPS", cat:"security", icon:"🔐", url:"http://www.prisons.go.ug", catLabel:"Security & Order", desc:"Ensures safe, secure and humane custody with effective rehabilitation of offenders. Administers court-imposed sentences, protects offenders' rights in custody, and facilitates reintegration into society." },
+  { name:"Ministry of Internal Affairs", abbr:"MIA", cat:"security", icon:"🪪", url:"http://www.mia.go.ug", catLabel:"Security & Order", desc:"Regulates and facilitates exit and entry of nationals, manages immigration documents and work permits, oversees peace-building and amnesty programmes, and controls small arms proliferation." },
+  { name:"Directorate of Citizenship and Immigration Control", abbr:"DCIC", cat:"security", icon:"✈️", url:"http://www.immigration.go.ug", catLabel:"Security & Order", desc:"Issues Ugandan passports, entry permits, work permits, certificates of residence, visas, and grants citizenship. Manages all immigration control and citizenship services for Uganda." },
+  { name:"Uganda Human Rights Commission", abbr:"UHRC", cat:"rights", icon:"💛", url:"http://www.uhrc.ug", catLabel:"Human Rights", desc:"Established under the 1995 Constitution to investigate human rights violations, visit detention facilities, promote human rights education, and monitor Government compliance with international treaty obligations." },
+  { name:"Uganda Registration Services Bureau", abbr:"URSB", cat:"reg", icon:"📝", url:"http://www.ursb.go.ug", catLabel:"Registration", desc:"Autonomous statutory body carrying out all registrations under relevant laws. Maintains registers, data and records, acts as a clearing house for registration information, and collects stamp duty." },
+  { name:"National Identification and Registration Authority", abbr:"NIRA", cat:"reg", icon:"👆", url:"http://www.nira.go.ug", catLabel:"Registration", desc:"Mandated by the Registration of Persons Act 2015 to manage national identification, birth and death registration, adoption orders, alien identification, and related civil registration services." },
+  { name:"Uganda Law Society", abbr:"ULS", cat:"justice", icon:"💼", url:"http://www.ugandanlawsociety.org", catLabel:"Justice", desc:"Represents Uganda's legal profession, promotes the rule of law, maintains professional standards among lawyers, and provides a voice for the legal community on matters of law, justice, and governance." },
+  { name:"Ministry of Gender, Labour and Social Development", abbr:"MGLSD", cat:"social", icon:"👪", url:"http://www.mglsd.go.ug", catLabel:"Social", desc:"Oversees juvenile justice within JLOS, focusing on the protection, rehabilitation, and community reintegration of children and youth who come into conflict with the law." },
+  { name:"Amnesty Commission", abbr:"AC", cat:"social", icon:"🕊️", url:"http://www.amnestycommission.go.ug", catLabel:"Social", desc:"Implements the Amnesty Act by granting amnesty to individuals who have engaged in armed conflict, supporting their demobilisation, resettlement, and reintegration into communities." }
+];
+
+const grid = document.getElementById('instGrid');
+let active = 'all';
+
+function render(cat) {
+  active = cat;
+  const filtered = cat === 'all' ? institutions : institutions.filter(i => i.cat === cat);
+  document.getElementById('displayCount').textContent = filtered.length;
+  grid.innerHTML = '';
+  filtered.forEach((inst, idx) => {
+    const div = document.createElement('div');
+    div.className = `inst-card cat-${inst.cat} reveal reveal-delay-${(idx%4)+1}`;
+    div.innerHTML = `
+      <div class="inst-card__header">
+        <div class="inst-card__icon">${inst.icon}</div>
+        <div>
+          <div class="inst-card__abbr">${inst.abbr}</div>
+          <div class="inst-card__name">${inst.name}</div>
+        </div>
+      </div>
+      <span class="inst-card__cat">${inst.catLabel}</span>
+      <div class="inst-card__desc">${inst.desc}</div>
+      <div class="inst-card__footer">
+        <a class="inst-card__link" href="${inst.url}" target="_blank">Visit website ↗</a>
+        <button class="toggle-btn" aria-label="Toggle description">Details <span class="chev">▾</span></button>
+      </div>`;
+    div.querySelector('.toggle-btn').addEventListener('click', e => { e.stopPropagation(); div.classList.toggle('open'); });
+    div.addEventListener('click', () => div.classList.toggle('open'));
+    grid.appendChild(div);
+    requestAnimationFrame(() => { setTimeout(() => div.classList.add('visible'), idx * 40); });
+  });
+}
+
+document.getElementById('filterBar').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-tab');
+  if (!btn) return;
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render(btn.dataset.cat);
+});
+
+render('all');
+</script>
+</body>
+</html>

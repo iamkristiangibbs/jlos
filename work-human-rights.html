@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Rights — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    body { padding-top:0; }
+    .focus-card {
+      background:var(--white); border:1px solid var(--border);
+      border-radius:var(--radius-lg); padding:1.75rem;
+      display:flex; flex-direction:column; gap:0.75rem;
+      transition:box-shadow var(--transition), transform var(--transition);
+    }
+    .focus-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+    .focus-card__icon { font-size:2.2rem; }
+    .focus-card__title {
+      font-family:var(--font-display); font-size:1.05rem;
+      font-weight:700; color:var(--purple-dark); line-height:1.3;
+    }
+    .focus-card__desc { font-size:0.88rem; line-height:1.75; color:var(--ink-soft); }
+    .pillar-block {
+      display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;
+      padding:3rem 0; border-bottom:1px solid var(--border);
+    }
+    .pillar-block:last-child { border-bottom:none; padding-bottom:0; }
+    .pillar-block.reverse { direction:rtl; }
+    .pillar-block.reverse > * { direction:ltr; }
+    .pillar-block__label {
+      display:inline-block; font-size:0.68rem; font-weight:800;
+      letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--white); background:var(--purple);
+      padding:4px 10px; border-radius:4px; margin-bottom:0.75rem;
+    }
+    .pillar-block h3 {
+      font-family:var(--font-display); font-size:1.4rem; color:var(--ink);
+      margin-bottom:1rem; line-height:1.3;
+    }
+    .pillar-block p { font-size:0.9rem; line-height:1.8; color:var(--ink-soft); margin-bottom:0.75rem; }
+    .pillar-block p:last-child { margin-bottom:0; }
+    @media(max-width:768px){ .pillar-block, .pillar-block.reverse { grid-template-columns:1fr; direction:ltr; } }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__media">
+    <img src="HUMAN-RIGHTS2.png" alt="Human Rights">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="our-work.html">Our Work</a>
+      <span class="sep">/</span>
+      <span class="current">Human Rights</span>
+    </nav>
+    <h1>Human Rights</h1>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section section--white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow reveal">Programme Area</span>
+      <h2 class="section-heading reveal reveal-delay-1">Upholding Rights, Empowering Citizens</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2"></div>
+    </div>
+    <div style="max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:1.25rem;">
+      <p class="reveal" style="font-size:1rem; line-height:1.85; color:var(--ink-soft)">
+        Human rights observance is a critical feature of Uganda's governance and the rule of law, as emphasised in Vision 2040. The Sector is focusing on strengthening JLOS institutions to eliminate human rights violations as well as promoting citizens' rights and obligations within the framework of the National Action Plan for Human Rights.
+      </p>
+      <p class="reveal reveal-delay-1" style="font-size:1rem; line-height:1.85; color:var(--ink-soft)">
+        Human rights violations and abuses are partly caused by a lack of information among citizens about their rights and where to seek protection. JLOS has commenced the development of a coherent framework that would streamline and further guide knowledge empowerment of the people of Uganda.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS CARDS -->
+<section class="section section--off-white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow reveal">Strategy</span>
+      <h2 class="section-heading reveal reveal-delay-1">Key Focus Areas</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2"></div>
+    </div>
+    <div class="grid-3">
+      <div class="focus-card reveal">
+        <div class="focus-card__icon">📚</div>
+        <div class="focus-card__title">Civic Education &amp; Rights Awareness</div>
+        <p class="focus-card__desc">Developing a coherent civic education strategy to empower Ugandans with knowledge about their rights and obligations, support compliance with the law, provide platforms for social accountability, and reinforce participatory governance.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-1">
+        <div class="focus-card__icon">🏛️</div>
+        <div class="focus-card__title">Institutional Strengthening</div>
+        <p class="focus-card__desc">Strengthening JLOS institutions — in particular the Uganda Human Rights Commission and Judicial Service Commission — to investigate violations, adjudicate complaints, and monitor state compliance with national and international human rights obligations.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-2">
+        <div class="focus-card__icon">🤝</div>
+        <div class="focus-card__title">National Action Plan for Human Rights</div>
+        <p class="focus-card__desc">Implementing Uganda's National Action Plan for Human Rights, mainstreaming gender, children's rights, and disability into JLOS programmes, and combating sexual and gender-based violence through dedicated institutions and community-level interventions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL SECTIONS -->
+<section class="section section--white">
+  <div class="container">
+    <div class="pillar-block reveal">
+      <div>
+        <div class="pillar-block__label">UHRC &amp; JSC</div>
+        <h3>Civic Education Strategy</h3>
+        <p>The Uganda Human Rights Commission (UHRC) and the Judicial Service Commission (JSC) have commenced the development of a joint civic education strategy. Among its objectives, the strategy will support compliance with legal and human rights standards, provide platforms for social accountability, reinforce participatory governance, and foster constitutionalism and the rule of law.</p>
+        <p>This initiative recognises that informed citizens are the foundation of a rights-respecting society, and that sustainable human rights improvements depend on communities understanding and asserting the protections available to them.</p>
+      </div>
+      <div style="background:var(--purple-pale); border-radius:var(--radius-lg); padding:2rem; display:flex; flex-direction:column; gap:1.25rem;">
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-size:1.5rem; flex-shrink:0;">✅</span>
+          <p style="margin:0; font-size:0.88rem; line-height:1.7; color:var(--ink-soft);">Investigating and adjudicating human rights violation cases across Uganda.</p>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-size:1.5rem; flex-shrink:0;">✅</span>
+          <p style="margin:0; font-size:0.88rem; line-height:1.7; color:var(--ink-soft);">Visiting prisons, remand homes, and police cells to monitor conditions and rights compliance.</p>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-size:1.5rem; flex-shrink:0;">✅</span>
+          <p style="margin:0; font-size:0.88rem; line-height:1.7; color:var(--ink-soft);">Monitoring Government compliance with international human rights treaty obligations.</p>
+        </div>
+        <div style="display:flex; gap:0.75rem; align-items:flex-start;">
+          <span style="font-size:1.5rem; flex-shrink:0;">✅</span>
+          <p style="margin:0; font-size:0.88rem; line-height:1.7; color:var(--ink-soft);">Publishing periodic human rights reports and recommendations to Parliament.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK WITH US -->
+<section class="section section--purple">
+  <div class="container text-center">
+    <span class="section-eyebrow reveal" style="color:var(--gold-light)">Get Involved</span>
+    <h2 class="text-white reveal reveal-delay-1" style="color:var(--white); font-family:var(--font-display)">Work With JLOS on Human Rights</h2>
+    <div class="purple-bar purple-bar--center reveal reveal-delay-2" style="background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div>
+    <p class="mt-2 reveal" style="max-width:620px; margin:0.5rem auto 2.5rem; color:rgba(255,255,255,0.75); line-height:1.8">
+      JLOS welcomes engagement from human rights bodies, civil society organisations, development partners, and academic institutions. Supporting civic education, institutional capacity, and the National Action Plan for Human Rights are among the priority areas for collaboration.
+    </p>
+    <a href="contact.html" class="btn btn--gold reveal">Contact the Secretariat <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>

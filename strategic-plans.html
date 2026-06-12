@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategic Plans — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    body { padding-top:0; }
+
+    /* Plan timeline strip */
+    .plans-strip {
+      display:grid; grid-template-columns:repeat(5,1fr);
+      border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden;
+    }
+    .plan-tab {
+      padding:1.25rem 1rem; text-align:center; cursor:pointer;
+      border-right:1px solid var(--border); background:var(--white);
+      transition:background var(--transition-fast), color var(--transition-fast);
+      text-decoration:none; display:flex; flex-direction:column; gap:0.35rem;
+    }
+    .plan-tab:last-child { border-right:none; }
+    .plan-tab:hover { background:var(--purple-pale); }
+    .plan-tab__badge {
+      font-family:var(--font-body); font-size:0.68rem; font-weight:800;
+      letter-spacing:0.1em; color:var(--white); background:var(--purple);
+      border-radius:4px; padding:3px 8px; display:inline-block; margin:0 auto;
+    }
+    .plan-tab__title { font-size:0.78rem; font-weight:700; color:var(--ink); line-height:1.2; }
+    .plan-tab__period { font-size:0.7rem; color:var(--ink-muted); }
+    .plan-tab.current .plan-tab__badge { background:var(--gold); }
+    .plan-tab.current { background:var(--purple-pale); }
+    @media(max-width:700px){ .plans-strip { grid-template-columns:1fr 1fr; } .plan-tab:nth-child(5){ grid-column:1/-1; border-right:none; } }
+
+    /* Plan detail sections */
+    .plan-section {
+      border:1px solid var(--border); border-radius:var(--radius-lg);
+      overflow:hidden; margin-bottom:1.5rem;
+    }
+    .plan-section__header {
+      display:flex; align-items:center; gap:1.25rem;
+      padding:1.25rem 1.5rem; cursor:pointer; user-select:none;
+      background:var(--white); transition:background var(--transition-fast);
+      border-left:4px solid transparent;
+    }
+    .plan-section__header:hover { background:var(--purple-pale); }
+    .plan-section.open .plan-section__header {
+      background:var(--purple-pale); border-left-color:var(--purple);
+    }
+    .plan-section__badge {
+      flex-shrink:0; font-family:var(--font-body); font-size:0.62rem; font-weight:800;
+      letter-spacing:0.1em; text-transform:uppercase; text-align:center;
+      color:var(--purple); border:1.5px solid var(--purple); border-radius:4px;
+      padding:4px 10px; min-width:58px;
+      transition:background var(--transition-fast), color var(--transition-fast);
+    }
+    .plan-section.open .plan-section__badge { background:var(--purple); color:var(--white); }
+    .plan-section__info { flex:1; }
+    .plan-section__name {
+      font-family:var(--font-body); font-size:0.95rem; font-weight:700;
+      color:var(--ink); line-height:1.3;
+    }
+    .plan-section.open .plan-section__name { color:var(--purple-dark); }
+    .plan-section__period {
+      font-size:0.75rem; color:var(--ink-muted); margin-top:2px;
+    }
+    .plan-section__toggle {
+      flex-shrink:0; width:26px; height:26px; border-radius:50%;
+      border:1.5px solid var(--border); position:relative;
+      transition:background var(--transition-fast), border-color var(--transition-fast);
+    }
+    .plan-section.open .plan-section__toggle { background:var(--purple); border-color:var(--purple); }
+    .plan-section__toggle::before,
+    .plan-section__toggle::after {
+      content:''; position:absolute; top:50%; left:50%;
+      background:var(--purple); border-radius:1px;
+      transition:opacity var(--transition-fast), background var(--transition-fast);
+    }
+    .plan-section__toggle::before { width:10px; height:1.5px; transform:translate(-50%,-50%); }
+    .plan-section__toggle::after  { width:1.5px; height:10px; transform:translate(-50%,-50%); }
+    .plan-section.open .plan-section__toggle::before,
+    .plan-section.open .plan-section__toggle::after { background:var(--white); }
+    .plan-section.open .plan-section__toggle::after { opacity:0; }
+
+    /* Body animation */
+    .plan-section__body { display:grid; grid-template-rows:0fr; transition:grid-template-rows 0.32s ease; }
+    .plan-section.open .plan-section__body { grid-template-rows:1fr; }
+    .plan-section__body-inner { overflow:hidden; min-height:0; }
+    .plan-section__body-content {
+      padding:1.75rem 1.5rem; border-top:1px solid var(--border);
+      background:var(--off-white);
+    }
+
+    /* Content inside plans */
+    .plan-intro { font-size:0.93rem; line-height:1.8; color:var(--ink-soft); margin-bottom:1.5rem; }
+    .plan-intro + .plan-intro { margin-top:-0.75rem; }
+    .plan-subheading {
+      font-family:var(--font-body); font-size:0.78rem; font-weight:800;
+      letter-spacing:0.08em; text-transform:uppercase; color:var(--purple);
+      margin:1.5rem 0 0.75rem;
+    }
+    .plan-subheading:first-of-type { margin-top:0; }
+    .plan-list {
+      display:flex; flex-direction:column; gap:0.5rem;
+      padding-left:0; list-style:none;
+    }
+    .plan-list li {
+      display:flex; gap:0.75rem; align-items:flex-start;
+      font-size:0.88rem; line-height:1.7; color:var(--ink-soft);
+    }
+    .plan-list li::before {
+      content:''; flex-shrink:0; width:6px; height:6px;
+      border-radius:50%; background:var(--gold); margin-top:0.55em;
+    }
+    .plan-kra {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:0.75rem; margin-top:0.5rem;
+    }
+    .plan-kra__item {
+      background:var(--white); border:1px solid var(--border);
+      border-radius:var(--radius); padding:0.85rem 1rem;
+      border-left:3px solid var(--gold);
+      font-size:0.85rem; line-height:1.5; color:var(--ink-soft);
+    }
+    .plan-download {
+      display:inline-flex; align-items:center; gap:0.6rem;
+      margin-top:1.75rem; padding:0.7rem 1.4rem;
+      background:var(--purple); color:var(--white);
+      border-radius:var(--radius); font-size:0.82rem; font-weight:700;
+      text-decoration:none; transition:background var(--transition-fast);
+      letter-spacing:0.02em;
+    }
+    .plan-download:hover { background:var(--purple-dark); }
+    .plan-download svg { flex-shrink:0; }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__media">
+    <img src="JLOSSTRATEGY.png" alt="Strategic Plans">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Strategic Plans</span>
+    </nav>
+    <h1>Strategic Plans</h1>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section section--white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow reveal">Planning Framework</span>
+      <h2 class="section-heading reveal reveal-delay-1">JLOS Strategic Development Plans</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2"></div>
+      <p class="mt-2 reveal" style="max-width:700px; margin-left:auto; margin-right:auto; color:var(--ink-soft); line-height:1.8">
+        JLOS operates as a Sector-Wide Approach (SWAp), coordinating nearly one-third of government institutions under a shared strategic framework. Since 2001, five successive plans have guided the sector's reform agenda — each building on the achievements and lessons of the last.
+      </p>
+    </div>
+
+    <!-- Quick navigation strip -->
+    <div class="plans-strip reveal">
+      <a class="plan-tab current" href="#sdpv">
+        <span class="plan-tab__badge">SDP V</span>
+        <span class="plan-tab__title">5th Strategic Development Plan</span>
+        <span class="plan-tab__period">2021 – 2025</span>
+      </a>
+      <a class="plan-tab" href="#sdpiv">
+        <span class="plan-tab__badge">SDP IV</span>
+        <span class="plan-tab__title">4th Sector Development Plan</span>
+        <span class="plan-tab__period">2017 – 2021</span>
+      </a>
+      <a class="plan-tab" href="#sipiii">
+        <span class="plan-tab__badge">SIP III</span>
+        <span class="plan-tab__title">3rd Strategic Investment Plan</span>
+        <span class="plan-tab__period">2012 – 2017</span>
+      </a>
+      <a class="plan-tab" href="#sipii">
+        <span class="plan-tab__badge">SIP II</span>
+        <span class="plan-tab__title">2nd Strategic Investment Plan</span>
+        <span class="plan-tab__period">2006 – 2011</span>
+      </a>
+      <a class="plan-tab" href="#sipi">
+        <span class="plan-tab__badge">SIP I</span>
+        <span class="plan-tab__title">1st Strategic Investment Plan</span>
+        <span class="plan-tab__period">2001 – 2006</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN DETAILS -->
+<section class="section section--off-white">
+  <div class="container">
+
+    <!-- SDP V -->
+    <div class="plan-section reveal" id="sdpv">
+      <div class="plan-section__header" onclick="togglePlan(this)">
+        <div class="plan-section__badge">SDP V</div>
+        <div class="plan-section__info">
+          <div class="plan-section__name">5th Strategic Development Plan</div>
+          <div class="plan-section__period">2021 – 2025</div>
+        </div>
+        <div class="plan-section__toggle"></div>
+      </div>
+      <div class="plan-section__body">
+        <div class="plan-section__body-inner">
+          <div class="plan-section__body-content">
+            <p class="plan-intro">The Justice, Law, and Order Sub-programme is embedded within the national planning framework as a sector-wide approach (SWAp), which began as an initial, locally based pilot and has evolved into a collaboration that brings together nearly one-third of government institutions. JLOS brings together state and non-state actors who play complementary roles in planning, budgeting, programme implementation, monitoring, and evaluation.</p>
+
+            <div class="plan-subheading">Structure of SDP V</div>
+            <p class="plan-intro">The SDP V has six major sections:</p>
+            <ul class="plan-list">
+              <li>Introduction and background to the SDP V</li>
+              <li>The situational analysis</li>
+              <li>The SDP V Strategic Framework</li>
+              <li>Institutional arrangements and framework for Monitoring and Evaluation</li>
+              <li>SDP V Cost and Financing Strategy</li>
+              <li>JLOS SDP V Results Framework</li>
+            </ul>
+
+            <a class="plan-download" href="https://jlos.go.ug/wp-content/uploads/2025/11/Access-to-Justice-Subprogram-Strategy-2021-2025_Final.pdf" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download SDP V (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SDP IV -->
+    <div class="plan-section reveal" id="sdpiv">
+      <div class="plan-section__header" onclick="togglePlan(this)">
+        <div class="plan-section__badge">SDP IV</div>
+        <div class="plan-section__info">
+          <div class="plan-section__name">4th Sector Development Plan</div>
+          <div class="plan-section__period">2017 – 2021</div>
+        </div>
+        <div class="plan-section__toggle"></div>
+      </div>
+      <div class="plan-section__body">
+        <div class="plan-section__body-inner">
+          <div class="plan-section__body-content">
+            <p class="plan-intro">The JLOS 4th Sector Development Plan (SDP IV) builds on earlier achievements to strengthen the rule of law, enhance safety and security of property, and expand access to justice for inclusive growth.</p>
+            <p class="plan-intro">Under the previous plan (SIP III), JLOS improved public trust from 26% to 48%, service satisfaction from 59% to 72%, and expanded access to services across 82% of districts. Crime rates and case backlogs reduced, while Uganda's ease of doing business ranking improved. However, challenges such as limited rural access, outdated technology, corruption, prison congestion, and new crimes like cybercrime remained.</p>
+
+            <div class="plan-subheading">Three Key Goals</div>
+            <ul class="plan-list">
+              <li>Expanding access to justice and JLOS infrastructure.</li>
+              <li>Promoting human rights and fighting corruption.</li>
+              <li>Strengthening commercial justice and competitiveness.</li>
+            </ul>
+
+            <div class="plan-subheading">Key Priorities</div>
+            <ul class="plan-list">
+              <li>One-stop service centres for integrated justice delivery.</li>
+              <li>Automation and e-justice across member institutions.</li>
+              <li>Law reform aligned to commercial and civil justice needs.</li>
+              <li>Targeted projects for children, women, and vulnerable groups.</li>
+            </ul>
+
+            <div class="plan-subheading">Implementation</div>
+            <p class="plan-intro">The plan, costing UGX 5.7 trillion, is funded mainly by government and development partners. Implementation involves all 18 JLOS institutions with strong monitoring and evaluation systems, annual reviews, and a midterm assessment to ensure accountability and results.</p>
+
+            <a class="plan-download" href="https://jlos.go.ug/wp-content/uploads/2025/10/The-Fourth-Sector-Development-Plan-final_compressed.pdf" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download SDP IV (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIP III -->
+    <div class="plan-section reveal" id="sipiii">
+      <div class="plan-section__header" onclick="togglePlan(this)">
+        <div class="plan-section__badge">SIP III</div>
+        <div class="plan-section__info">
+          <div class="plan-section__name">3rd Strategic Investment Plan</div>
+          <div class="plan-section__period">2012/13 – 2016/17</div>
+        </div>
+        <div class="plan-section__toggle"></div>
+      </div>
+      <div class="plan-section__body">
+        <div class="plan-section__body-inner">
+          <div class="plan-section__body-content">
+            <p class="plan-intro">JLOS in Uganda has become a regional model for justice and law reform coordination. Built on a rights-based approach, JLOS brings together over 15 institutions working in family, land, commercial, and criminal justice. SIP III was developed to deepen reforms, strengthen institutional capacity, and expand access to justice for all Ugandans — especially the poor and vulnerable.</p>
+            <p class="plan-intro">SIP III aligns with Uganda's National Development Plan and international human rights commitments, aiming to uphold rights enshrined in the 1995 Constitution and major UN and African human rights instruments.</p>
+
+            <div class="plan-subheading">Key Policy Shifts</div>
+            <ul class="plan-list">
+              <li>Expanding law reform to focus on real-life impact and enforcement.</li>
+              <li>Bridging formal and informal justice systems.</li>
+              <li>Targeting gender, age, and poverty-based vulnerabilities.</li>
+              <li>Tackling corruption, accountability, and human rights violations.</li>
+              <li>Strengthening collaboration with non-state actors and local communities.</li>
+            </ul>
+
+            <div class="plan-subheading">Targets by 2016/17</div>
+            <div class="plan-kra">
+              <div class="plan-kra__item">A stronger legal and policy framework promoting rule of law and rights.</div>
+              <div class="plan-kra__item">Greater access to justice and a safer society, especially for vulnerable groups.</div>
+              <div class="plan-kra__item">Public satisfaction rising to 70% and confidence in justice services increasing from 34% to 50%.</div>
+            </div>
+
+            <a class="plan-download" href="https://jlos.go.ug/wp-content/uploads/2025/10/The-Third-JLOS-Strategic-Investment-Plan-SIPIII_compressed.pdf" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download SIP III (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIP II -->
+    <div class="plan-section reveal" id="sipii">
+      <div class="plan-section__header" onclick="togglePlan(this)">
+        <div class="plan-section__badge">SIP II</div>
+        <div class="plan-section__info">
+          <div class="plan-section__name">2nd Strategic Investment Plan</div>
+          <div class="plan-section__period">2006/07 – 2010/11</div>
+        </div>
+        <div class="plan-section__toggle"></div>
+      </div>
+      <div class="plan-section__body">
+        <div class="plan-section__body-inner">
+          <div class="plan-section__body-content">
+            <p class="plan-intro">The Second Strategic Investment Plan builds on the progress of SIP I (2001–2006), aiming to deepen justice sector reforms with a stronger focus on the poor and marginalised. The plan seeks to improve service delivery, human rights, access to justice, and poverty reduction across Uganda, including conflict-affected regions.</p>
+
+            <div class="plan-subheading">Reform Priorities</div>
+            <p class="plan-intro">SIP II is aligned with Uganda's Poverty Eradication Action Plan (PEAP), focusing on promoting wealth creation and competitiveness through justice and stability, reducing crime and legal uncertainty, and enhancing justice in Commercial, Land, Family, and Criminal sectors.</p>
+
+            <div class="plan-subheading">Five Key Result Areas</div>
+            <div class="plan-kra">
+              <div class="plan-kra__item">Rule of law and due process promoted.</div>
+              <div class="plan-kra__item">Human rights culture strengthened.</div>
+              <div class="plan-kra__item">Access to justice for all enhanced.</div>
+              <div class="plan-kra__item">Crime reduced; personal and property security improved.</div>
+              <div class="plan-kra__item">JLOS contribution to economic development increased.</div>
+            </div>
+
+            <div class="plan-subheading">Key Focus Areas</div>
+            <ul class="plan-list">
+              <li>Law reform and faster case disposal.</li>
+              <li>Reducing crime and remand periods.</li>
+              <li>Improving justice in conflict zones.</li>
+              <li>Rehabilitation of offenders and juvenile diversion.</li>
+              <li>Legal awareness, gender mainstreaming, and HIV/AIDS integration.</li>
+              <li>Institutional strengthening and inter-agency collaboration.</li>
+            </ul>
+
+            <div class="plan-subheading">Financing</div>
+            <p class="plan-intro">Total projected budget of UGX 600.3 billion over three years (~4.9% of national budget), with emphasis on transparency, efficiency, and stakeholder engagement including civil society and the private sector.</p>
+
+            <a class="plan-download" href="https://jlos.go.ug/wp-content/uploads/2025/10/Final-JLOS-SIP-II-Narrative-2008_compressed.pdf" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download SIP II (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIP I -->
+    <div class="plan-section reveal" id="sipi">
+      <div class="plan-section__header" onclick="togglePlan(this)">
+        <div class="plan-section__badge">SIP I</div>
+        <div class="plan-section__info">
+          <div class="plan-section__name">1st Strategic Investment Plan</div>
+          <div class="plan-section__period">2001 – 2006</div>
+        </div>
+        <div class="plan-section__toggle"></div>
+      </div>
+      <div class="plan-section__body">
+        <div class="plan-section__body-inner">
+          <div class="plan-section__body-content">
+            <p class="plan-intro">Despite the social, economic, and political challenges faced, SIP I recorded impressive achievements. Its greatest success was building a sense of unity among justice sector institutions, which by SIP II had come to view JLOS as a coordination and communication framework rather than just a funding tool. The Sector-Wide Approach (SWAp) improved aid management, coherence, and predictability.</p>
+
+            <div class="plan-subheading">Key Achievements</div>
+            <ul class="plan-list">
+              <li><strong style="color:var(--ink)">Civic &amp; Legal Education:</strong> JLOS increased public awareness through campaigns and partnerships with NGOs, later strengthened by the Legal Aid Basket Fund (2007) to support rights-based education.</li>
+              <li><strong style="color:var(--ink)">Criminal Justice:</strong> The Chain Linked Initiative improved coordination and case management across the criminal justice chain.</li>
+              <li><strong style="color:var(--ink)">Commercial Justice:</strong> Establishment of the Commercial Court reduced case backlogs and corruption perceptions. Mediation at CADER improved case settlement.</li>
+              <li><strong style="color:var(--ink)">Law Reform:</strong> Efforts to update outdated laws were advanced, with SIP II later prioritising land registry reform and legislative tracking.</li>
+              <li><strong style="color:var(--ink)">Human Resource Development:</strong> Structured human rights training and stronger links with legal education institutions were established.</li>
+              <li><strong style="color:var(--ink)">Access to Justice:</strong> The Legal Aid Service Providers Network (LASPNET) and Local Council Courts improved local justice delivery. Family and Land Justice programmes were added to address gaps for women and children.</li>
+            </ul>
+
+            <div class="plan-subheading">Foundation for Future Plans</div>
+            <p class="plan-intro">SIP I laid the institutional foundation for all subsequent JLOS plans. SIP II refined objectives to expand access to justice for the poor and marginalised, adding Land and Family Justice as new focus areas, and demonstrated that sustained commitment is required to ensure the continuity of reforms.</p>
+
+            <a class="plan-download" href="https://jlos.go.ug/wp-content/uploads/2025/10/497010ESW0P11010Box341968B01PUBLIC1_compressed.pdf" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download SIP I (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="nav.js"></script>
+<script>
+function togglePlan(header) {
+  header.closest('.plan-section').classList.toggle('open');
+}
+/* Auto-open the plan whose anchor is in the URL hash */
+(function(){
+  const hash = location.hash;
+  if (hash) {
+    const target = document.querySelector(hash);
+    if (target && target.classList.contains('plan-section')) {
+      target.classList.add('open');
+      setTimeout(() => target.scrollIntoView({ behavior:'smooth', block:'start' }), 400);
+    }
+  }
+})();
+</script>
+</body>
+</html>

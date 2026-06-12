@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    body { padding-top: var(--nav-h); }
+    .work-area {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; padding: 5rem 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .work-area:last-child { border-bottom: none; }
+    .work-area.reverse { direction: rtl; }
+    .work-area.reverse > * { direction: ltr; }
+    .work-img { position: relative; border-radius: var(--radius-lg); overflow: hidden; }
+    .work-img img { width:100%; height:380px; object-fit:cover; display:block; transition: transform 0.7s ease; }
+    .work-img:hover img { transform: scale(1.04); }
+    .work-img__tag {
+      position: absolute; top: 1.25rem; left: 1.25rem;
+      background: var(--gold); color: var(--white);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 40px;
+    }
+    .work-outcomes { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .outcome-item {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      padding: 0.85rem 1rem; background: var(--cream-dark); border-radius: var(--radius-lg);
+    }
+    .outcome-item .num { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold); font-weight:500; line-height:1; flex-shrink:0; width:32px; }
+    .outcome-item p { font-size:0.88rem; margin:0; }
+    @media(max-width:768px){ .work-area, .work-area.reverse { grid-template-columns:1fr; direction:ltr; } }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.25rem; }
+    .project-card {
+      background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--radius-lg);
+      padding: 1.5rem; transition: box-shadow var(--transition), transform var(--transition);
+      text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .project-card:hover { box-shadow: 0 10px 32px rgba(14,30,53,0.1); transform: translateY(-3px); }
+    .project-card__icon { font-size: 2rem; }
+    .project-card h4 { font-family: var(--font-display); color: var(--navy); font-size: 1.15rem; }
+    .project-card p { font-size: 0.87rem; flex:1; }
+    .project-card span { font-size: 0.78rem; color: var(--gold); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero__media">
+    <!-- REPLACE with your own image -->
+    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400&q=80&auto=format" alt="Our Work">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span>Our Work</span>
+    </nav>
+    <span class="eyebrow">Programmes</span>
+    <h1>What We <em class="display-italic">Do</em></h1>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="eyebrow reveal">Focus Areas</span>
+      <h2 class="section-title reveal reveal-delay-1">Core Programme <em class="display-italic">Areas</em></h2>
+      <div class="gold-line gold-line--center reveal reveal-delay-2"></div>
+      <p class="mt-2" style="max-width:600px;margin:0.5rem auto 0">JLOS works across five interconnected areas to deliver a justice system that is accessible, efficient, and equitable for all Ugandans.</p>
+    </div>
+
+    <!-- Criminal Justice -->
+    <div class="work-area reveal" id="criminal">
+      <div class="work-img">
+        <!-- REPLACE with your own image -->
+        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=80&auto=format" alt="Criminal Justice">
+        <span class="work-img__tag">Criminal Justice</span>
+      </div>
+      <div>
+        <span class="eyebrow">Programme Area</span>
+        <h2 class="section-title">Criminal <em class="display-italic">Justice</em></h2>
+        <div class="gold-line"></div>
+        <p>JLOS works to ensure that criminal justice is delivered swiftly, fairly, and humanely across Uganda. This includes reducing case backlogs, improving prosecution quality, protecting victims' rights, and ensuring that prisons are humane and rehabilitative.</p>
+        <div class="work-outcomes">
+          <div class="outcome-item"><span class="num">01</span><p>Reducing case backlog in all tiers of the Judiciary through fast-track courts and plea bargaining.</p></div>
+          <div class="outcome-item"><span class="num">02</span><p>Strengthening prosecution quality through ODPP training and case management systems.</p></div>
+          <div class="outcome-item"><span class="num">03</span><p>Improving prison conditions and expanding rehabilitation programmes for offenders.</p></div>
+        </div>
+        <a href="work-criminal.html" class="btn btn--outline-purple" style="margin-top:1.5rem">Explore Criminal Justice <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Civil Justice -->
+    <div class="work-area reverse reveal" id="civil">
+      <div class="work-img">
+        <img src="https://images.unsplash.com/photo-1554774853-719586f82d77?w=800&q=80&auto=format" alt="Civil Justice">
+        <span class="work-img__tag">Civil Justice</span>
+      </div>
+      <div>
+        <span class="eyebrow">Programme Area</span>
+        <h2 class="section-title">Civil <em class="display-italic">Justice</em></h2>
+        <div class="gold-line"></div>
+        <p>Civil justice reforms focus on making the resolution of civil disputes — including land, family, commercial, and labour matters — more accessible and affordable, especially for vulnerable populations.</p>
+        <div class="work-outcomes">
+          <div class="outcome-item"><span class="num">01</span><p>Expanding legal aid through the JLOS Legal Aid Programme and justice centres.</p></div>
+          <div class="outcome-item"><span class="num">02</span><p>Promoting Alternative Dispute Resolution through CADER and local council courts.</p></div>
+          <div class="outcome-item"><span class="num">03</span><p>Digitising civil court records for faster, more transparent dispute resolution.</p></div>
+        </div>
+        <a href="work-civil.html" class="btn btn--outline-purple" style="margin-top:1.5rem">Explore Civil Justice <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Human Rights -->
+    <div class="work-area reveal" id="rights">
+      <div class="work-img">
+        <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=800&q=80&auto=format" alt="Human Rights">
+        <span class="work-img__tag">Human Rights</span>
+      </div>
+      <div>
+        <span class="eyebrow">Programme Area</span>
+        <h2 class="section-title">Human <em class="display-italic">Rights</em></h2>
+        <div class="gold-line"></div>
+        <p>JLOS works to embed human rights principles across all member institutions, ensuring that the justice system protects rather than violates the rights of citizens, including the most marginalised.</p>
+        <div class="work-outcomes">
+          <div class="outcome-item"><span class="num">01</span><p>Supporting UHRC to investigate and adjudicate human rights violation cases.</p></div>
+          <div class="outcome-item"><span class="num">02</span><p>Mainstreaming gender, children's rights, and disability across sector institutions.</p></div>
+          <div class="outcome-item"><span class="num">03</span><p>Combating SGBV through dedicated special sessions and survivor support services.</p></div>
+        </div>
+        <a href="work-human-rights.html" class="btn btn--outline-purple" style="margin-top:1.5rem">Explore Human Rights <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Transitional Justice -->
+    <div class="work-area reverse reveal" id="transitional">
+      <div class="work-img">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&auto=format" alt="Transitional Justice">
+        <span class="work-img__tag">Transitional Justice</span>
+      </div>
+      <div>
+        <span class="eyebrow">Programme Area</span>
+        <h2 class="section-title">Transitional <em class="display-italic">Justice</em></h2>
+        <div class="gold-line"></div>
+        <p>Uganda's transitional justice framework addresses legacy issues from past conflicts, particularly in Northern Uganda. JLOS coordinates mechanisms for truth-telling, accountability, and reconciliation.</p>
+        <div class="work-outcomes">
+          <div class="outcome-item"><span class="num">01</span><p>Documenting atrocities and supporting survivor testimonies through the ADC project.</p></div>
+          <div class="outcome-item"><span class="num">02</span><p>Facilitating community reconciliation through traditional and formal justice mechanisms.</p></div>
+          <div class="outcome-item"><span class="num">03</span><p>Supporting the Amnesty Commission to reintegrate former combatants.</p></div>
+        </div>
+        <a href="work-transitional.html" class="btn btn--outline-purple" style="margin-top:1.5rem">Explore Transitional Justice <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Accountability -->
+    <div class="work-area reveal" id="accountability">
+      <div class="work-img">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80&auto=format" alt="Accountability">
+        <span class="work-img__tag">Accountability</span>
+      </div>
+      <div>
+        <span class="eyebrow">Programme Area</span>
+        <h2 class="section-title">Accountability &amp; <em class="display-italic">Governance</em></h2>
+        <div class="gold-line"></div>
+        <p>JLOS strengthens institutional accountability by promoting transparency, combating corruption, and ensuring that justice institutions are governed in line with constitutional principles and citizens' expectations.</p>
+        <div class="work-outcomes">
+          <div class="outcome-item"><span class="num">01</span><p>Supporting anti-corruption mechanisms within JLOS institutions through internal oversight.</p></div>
+          <div class="outcome-item"><span class="num">02</span><p>Promoting e-justice and digital systems to reduce discretion and opportunity for corruption.</p></div>
+          <div class="outcome-item"><span class="num">03</span><p>Publishing annual performance reports for all member institutions.</p></div>
+        </div>
+        <a href="work-accountability.html" class="btn btn--outline-purple" style="margin-top:1.5rem">Explore Accountability <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="eyebrow reveal">Initiatives</span>
+      <h2 class="section-title reveal reveal-delay-1">Key <em class="display-italic">Projects</em></h2>
+      <div class="gold-line gold-line--center reveal reveal-delay-2"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-card__icon">🏢</div>
+        <h4>JLOS Towers</h4>
+        <p>A flagship infrastructure project to bring multiple justice institutions under one roof in Kampala for integrated service delivery.</p>
+        <span>Infrastructure →</span>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-card__icon">⚖️</div>
+        <h4>Justice Centres</h4>
+        <p>Community-based hubs providing integrated legal aid, mediation, and court services to underserved districts across Uganda.</p>
+        <span>Access to Justice →</span>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-card__icon">💻</div>
+        <h4>E-Justice</h4>
+        <p>Digitisation of court processes including electronic filing, case management, and virtual hearings to improve efficiency.</p>
+        <span>Technology →</span>
+      </div>
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-card__icon">👧</div>
+        <h4>Justice for Children</h4>
+        <p>Child-friendly justice spaces and diversion programmes that protect children in conflict with the law from the formal criminal system.</p>
+        <span>Child Rights →</span>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-card__icon">🔍</div>
+        <h4>SGBV Special Sessions</h4>
+        <p>Dedicated court sessions fast-tracking Sexual and Gender-Based Violence cases with trauma-informed processes for survivors.</p>
+        <span>Gender Justice →</span>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-card__icon">📊</div>
+        <h4>Justice Needs Survey</h4>
+        <p>A nationwide survey measuring citizens' legal needs and experiences of the justice system to inform evidence-based reform.</p>
+        <span>Research →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>

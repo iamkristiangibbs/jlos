@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JLOS — Justice, Law &amp; Order Services Uganda</title>
+  <meta name="description" content="Justice, Law and Order Services (JLOS) — Uganda's Governance and Security Programme. Administering Justice, Maintaining Law And Order.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    /* Hero carousel */
+    .hero-slides { position:absolute; inset:0; }
+    .hero-slide {
+      position:absolute; inset:0; opacity:0;
+      transition:opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity:1; }
+    .hero-slide img { width:100%; height:100%; object-fit:cover; object-position:center; }
+
+    /* Ticker */
+    .news-ticker {
+      background:var(--gold); color:var(--white);
+      padding:0.55rem 0; overflow:hidden;
+    }
+    .ticker-wrap { display:flex; align-items:center; }
+    .ticker-label {
+      background:var(--purple-dark); color:var(--gold-light);
+      font-size:0.7rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase;
+      padding:0.35rem 1rem; white-space:nowrap; flex-shrink:0; margin-right:1.5rem;
+    }
+    .ticker-track {
+      display:flex; gap:3rem; white-space:nowrap;
+      font-family:var(--font-body); font-size:0.82rem; font-weight:500;
+      animation:ticker-scroll 30s linear infinite;
+    }
+    @keyframes ticker-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-track:hover { animation-play-state:paused; }
+
+    /* About preview */
+    .pillar { display:flex; gap:1rem; align-items:flex-start; padding:1rem; background:var(--off-white); border-radius:var(--radius); border-left:3px solid var(--gold); }
+    .pillar__icon { font-size:1.6rem; flex-shrink:0; }
+    .pillar h5 { font-family:var(--font-body); font-weight:700; font-size:0.9rem; color:var(--navy); margin-bottom:2px; }
+    .pillar p  { font-size:0.83rem; margin:0; }
+
+    /* CTA Banner */
+    .cta-banner {
+      position:relative; border-radius:var(--radius-lg); overflow:hidden;
+      padding:4rem 3rem; text-align:center;
+    }
+    .cta-banner img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
+    .cta-banner__overlay { position:absolute;inset:0;background:linear-gradient(135deg,rgba(60,26,110,0.88),rgba(26,43,74,0.88)); }
+    .cta-banner__content { position:relative;z-index:2;color:var(--white); }
+    .cta-banner__content h2 { color:var(--white); margin-bottom:0.75rem; }
+    .cta-banner__content p { max-width:520px;margin:0 auto 2rem;color:rgba(255,255,255,0.75); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" style="padding-top:0">
+  <!-- Slideshow — REPLACE images with your own photos -->
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active">
+      <img src="IMG_4499.jpg" alt="Justice">
+    </div>
+    <div class="hero-slide">
+      <img src="IMG_4500.jpg" alt="Community">
+    </div>
+    <div class="hero-slide">
+      <img src="IMG_4504.jpg" alt="JLOS Team">
+    </div>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="container hero__content">
+    <span class="hero__brand">JLOS</span>
+    <h1 class="hero__title">Administering Justice,<br>Maintaining <em>Law And Order.</em></h1>
+    <p class="hero__subtitle">Uganda's sector-wide approach bringing together 18 institutions to promote the rule of law and deliver justice for all.</p>
+    <div class="hero__actions">
+      <a href="about-who-we-are.html" class="btn btn--purple">Read More</a>
+      <a href="about-members.html" class="btn btn--outline">Member Institutions</a>
+    </div>
+  </div>
+  <div class="hero__scroll-cue">Scroll <span class="hero__scroll-line"></span></div>
+</section>
+
+<!-- ═══════════════ NEWS TICKER ═══════════════ -->
+<div class="news-ticker">
+  <div class="container">
+    <div class="ticker-wrap">
+      <span class="ticker-label">Latest</span>
+      <div class="ticker-track">
+        <span>📢 JLOS Secretariat has moved to 7th Floor, JLOS Towers, Plot 98–102 Katalima Road</span>
+        <span>⚖️ JLOS Strategic Investment Plan V — Delivering People-Centred Justice 2025–2030</span>
+        <span>🏛️ 18 Member Institutions working together for #JusticeForAll in Uganda</span>
+        <span>📊 JLOS Annual Performance Report 2024 now available</span>
+        <span>📢 JLOS Secretariat has moved to 7th Floor, JLOS Towers, Plot 98–102 Katalima Road</span>
+        <span>⚖️ JLOS Strategic Investment Plan V — Delivering People-Centred Justice 2025–2030</span>
+        <span>🏛️ 18 Member Institutions working together for #JusticeForAll in Uganda</span>
+        <span>📊 JLOS Annual Performance Report 2024 now available</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ STAT BAR ═══════════════ -->
+<div class="stat-bar">
+  <div class="container">
+    <div class="stat-bar__grid reveal">
+      <div class="stat-item">
+        <span class="stat-item__num">18</span>
+        <span class="stat-item__label">Member Institutions</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-item__num">25+</span>
+        <span class="stat-item__label">Years of Justice Reform</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-item__num">146</span>
+        <span class="stat-item__label">Districts Covered</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-item__num">72%</span>
+        <span class="stat-item__label">Conviction Rate Achieved</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ABOUT PREVIEW ═══════════════ -->
+<section class="section section--white">
+  <div class="container">
+    <div class="grid-2">
+      <div class="about-img-wrap reveal">
+        <!-- REPLACE with a real JLOS photo -->
+        <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=800&q=80" alt="JLOS Building">
+        <div class="about-badge">
+          <span>1999</span>
+          <small>Established</small>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <span class="section-eyebrow">About JLOS</span>
+        <h2 class="section-heading">What is the Justice Law and Order Sector?</h2>
+        <div class="purple-bar"></div>
+        <p>The Justice Law and Order Sector (JLOS) is a sector-wide approach that brings together <strong>18 institutions</strong> with closely linked mandates responsible for administering justice, maintaining law and order and promoting the observance of human rights.</p>
+        <p class="mt-2">JLOS is a major player in the promotion of the rule of law in Uganda, built around the three Cs: <strong>Communication, Coordination and Cooperation</strong>.</p>
+
+        <div style="display:flex;flex-direction:column;gap:0.85rem;margin-top:1.75rem">
+          <div class="pillar">
+            <span class="pillar__icon">⚖️</span>
+            <div>
+              <h5>Mission</h5>
+              <p>To improve the safety of the person, security of property, and access to justice for inclusive growth with the overall goal to "promote the rule of law."</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar__icon">🌟</span>
+            <div>
+              <h5>Vision</h5>
+              <p>To ensure that people in Uganda live in a safe and just society.</p>
+            </div>
+          </div>
+        </div>
+        <a href="about-who-we-are.html" class="btn btn--purple mt-4">Learn More <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ OUR WORK PREVIEW ═══════════════ -->
+<section class="section section--off-white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow reveal">What We Do</span>
+      <h2 class="section-heading reveal reveal-delay-1">Our Work</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2"></div>
+    </div>
+    <div class="grid-3">
+      <a href="work-criminal.html" class="work-card reveal reveal-delay-1">
+        <!-- REPLACE with your own image -->
+        <img src="criminal-justice.jpg" alt="Criminal Justice">
+        <div class="work-card__overlay"></div>
+        <div class="work-card__body">
+          <span class="work-card__icon">⚖️</span>
+          <h3 class="work-card__title">Criminal Justice</h3>
+          <p class="work-card__desc">Strengthening crime-fighting agencies, rehabilitation of offenders and reducing recidivism across Uganda.</p>
+          <span class="work-card__arrow">Explore →</span>
+        </div>
+      </a>
+      <a href="work-civil.html" class="work-card reveal reveal-delay-2">
+        <img src="IMG_4504.jpg" alt="Civil Justice">
+        <div class="work-card__overlay"></div>
+        <div class="work-card__body">
+          <span class="work-card__icon">📜</span>
+          <h3 class="work-card__title">Civil Justice</h3>
+          <p class="work-card__desc">Facilitating commercial justice, business registries and dispute resolution for inclusive growth.</p>
+          <span class="work-card__arrow">Explore →</span>
+        </div>
+      </a>
+      <a href="work-human-rights.html" class="work-card reveal reveal-delay-3">
+        <img src="human-rights.jpg" alt="Human Rights">
+        <div class="work-card__overlay"></div>
+        <div class="work-card__body">
+          <span class="work-card__icon">🤝</span>
+          <h3 class="work-card__title">Human Rights</h3>
+          <p class="work-card__desc">Strengthening institutions to eliminate violations and promote citizens' rights and obligations.</p>
+          <span class="work-card__arrow">Explore →</span>
+        </div>
+      </a>
+    </div>
+    <div class="text-center mt-6 reveal">
+      <a href="work-criminal.html" class="btn btn--outline-purple">View All Work Areas <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section">
+  <div class="container">
+    <h2 class="reveal">Development Partners</h2>
+    <div class="purple-bar purple-bar--center reveal reveal-delay-1"></div>
+  </div>
+  <div class="partners-track-wrap reveal reveal-delay-2">
+    <div class="partners-track" id="partnersTrack">
+      
+      <div class="partner-logo-item">
+        <img src="Austrian-Development-Agency.png" alt="Austrian Development Agency">
+      </div>
+      <div class="partner-logo-item">
+        <img src="Republic-of-Austria.png" alt="Republic of Austria">
+      </div>
+      <div class="partner-logo-item">
+        <img src="unicef.png" alt="UNFPA">
+      </div>
+      <div class="partner-logo-item">
+        <img src="Kingdomofthe Netherlands.png" alt="Kingdom of the Netherlands">
+      </div>
+      <div class="partner-logo-item">
+        <img src="european-union.png" alt="European Union">
+      </div>
+      <div class="partner-logo-item">
+        <img src="Democratic-Governance-Facility.png" alt="Democratic Governance Facility">
+      </div>
+      <div class="partner-logo-item">
+        <img src="undp.png" alt="UNDP">
+      </div>
+      <div class="partner-logo-item">
+        <img src="un-women.png" alt="UN Women">
+      </div>
+      <div class="partner-logo-item">
+        <img src="unicef.png" alt="UNICEF">
+      </div>
+      <div class="partner-logo-item">
+        <img src="idlo.png" alt="IDLO">
+      </div>
+
+      <div class="partner-logo-item">
+        <img src="Austrian-Development-Agency.png" alt="Austrian Development Agency">
+      </div>
+      <div class="partner-logo-item">
+        <img src="Republic-of-Austria.png" alt="Republic of Austria">
+      </div>
+      <div class="partner-logo-item">
+        <img src="unicef.png" alt="UNFPA">
+      </div>
+      <div class="partner-logo-item">
+        <img src="Kingdomofthe Netherlands.png" alt="Kingdom of the Netherlands">
+      </div>
+      <div class="partner-logo-item">
+        <img src="european-union.png" alt="European Union">
+      </div>
+      <div class="partner-logo-item">
+        <img src="Democratic-Governance-Facility.png" alt="Democratic Governance Facility">
+      </div>
+      <div class="partner-logo-item">
+        <img src="undp.png" alt="UNDP">
+      </div>
+      <div class="partner-logo-item">
+        <img src="un-women.png" alt="UN Women">
+      </div>
+      <div class="partner-logo-item">
+        <img src="unicef.png" alt="UNICEF">
+      </div>
+      <div class="partner-logo-item">
+        <img src="idlo.png" alt="IDLO">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA BANNER ═══════════════ -->
+<section class="section section--white">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <!-- REPLACE with a real JLOS photo -->
+      <img src="IMG_4503.jpg" alt="Uganda">
+      <div class="cta-banner__overlay"></div>
+      <div class="cta-banner__content">
+        <span class="section-eyebrow">Get Involved</span>
+        <h2>Working Together for <em style="color:var(--gold-light);font-style:normal">Justice For All</em></h2>
+        <p>Whether you are a development partner, researcher, civil society actor or citizen — there are ways to engage with and support JLOS's mission.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn--gold">Contact Us <span class="arrow">→</span></a>
+          <a href="about-partners.html" class="btn btn--outline">Development Partners</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+<script>
+/* Hero slideshow */
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  let cur = 0;
+  setInterval(()=>{
+    slides[cur].classList.remove('active');
+    cur = (cur+1) % slides.length;
+    slides[cur].classList.add('active');
+  }, 5000);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Centre — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    body { padding-top: var(--nav-h); }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 1.5rem; }
+    .report-list { display: flex; flex-direction: column; gap: 1rem; }
+    .report-item {
+      display: flex; align-items: center; gap: 1.25rem;
+      background: var(--white); border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-lg); padding: 1.25rem 1.5rem;
+      text-decoration: none; color: inherit;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .report-item:hover { box-shadow: 0 8px 28px rgba(14,30,53,0.09); transform: translateX(4px); }
+    .report-item__year {
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 500;
+      color: var(--gold); min-width: 68px; line-height: 1;
+    }
+    .report-item__divider { width: 1px; height: 48px; background: var(--cream-dark); flex-shrink:0; }
+    .report-item__info { flex: 1; }
+    .report-item__title { font-family: var(--font-display); font-size: 1.05rem; color: var(--navy); font-weight: 500; }
+    .report-item__meta { font-size: 0.8rem; color: var(--ink-muted); margin-top: 3px; }
+    .report-item__dl { font-size: 0.75rem; color: var(--gold); font-weight: 600; letter-spacing: 0.06em; text-transform:uppercase; flex-shrink:0; }
+
+    .gallery-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.75rem; }
+    .gallery-item {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 1; cursor: pointer;
+    }
+    .gallery-item img { width:100%;height:100%;object-fit:cover; display:block; transition: transform 0.6s ease; }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item__overlay {
+      position:absolute;inset:0; background:rgba(14,30,53,0);
+      display:flex;align-items:center;justify-content:center;
+      transition: background 0.3s;
+      color:white;font-size:1.5rem;opacity:0;
+    }
+    .gallery-item:hover .gallery-item__overlay { background:rgba(14,30,53,0.45); opacity:1; }
+    .gallery-item.tall { grid-row: span 2; aspect-ratio: auto; }
+    @media(max-width:640px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  </style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero__media">
+    <!-- REPLACE with your own image -->
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1400&q=80&auto=format" alt="Media Centre">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span>Media Centre</span>
+    </nav>
+    <span class="eyebrow">Communications</span>
+    <h1>Media <em class="display-italic">Centre</em></h1>
+  </div>
+</section>
+
+<!-- ── NEWS ── -->
+<section class="section section--white">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem">
+      <div>
+        <span class="eyebrow reveal">Latest</span>
+        <h2 class="section-title reveal reveal-delay-1">News &amp; <em class="display-italic">Updates</em></h2>
+        <div class="gold-line reveal reveal-delay-2"></div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-tab active">All</button>
+      <button class="filter-tab">Press Releases</button>
+      <button class="filter-tab">Events</button>
+      <button class="filter-tab">Publications</button>
+      <button class="filter-tab">Multimedia</button>
+    </div>
+    <div class="news-grid">
+      <!-- REPLACE images and content with real news -->
+      <a href="#" class="news-card reveal">
+        <img class="news-card__img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&auto=format" alt="Report">
+        <div class="news-card__body">
+          <span class="news-card__tag">Annual Report</span>
+          <h3 class="news-card__title">JLOS Annual Report 2024 Released</h3>
+          <p style="font-size:0.87rem">Highlights achievements across all 18 member institutions including case clearance rates, legal aid reach and justice centre expansion.</p>
+          <p class="news-card__meta">15 January 2025</p>
+        </div>
+      </a>
+      <a href="#" class="news-card reveal reveal-delay-1">
+        <img class="news-card__img" src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=600&q=80&auto=format" alt="Forum">
+        <div class="news-card__body">
+          <span class="news-card__tag">Event</span>
+          <h3 class="news-card__title">JLOS High-Level Justice Reform Forum 2025</h3>
+          <p style="font-size:0.87rem">Ministers, judicial officers, and development partners convened to review progress on the 2021–2025 Strategic Plan.</p>
+          <p class="news-card__meta">28 February 2025</p>
+        </div>
+      </a>
+      <a href="#" class="news-card reveal reveal-delay-2">
+        <img class="news-card__img" src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&q=80&auto=format" alt="Community">
+        <div class="news-card__body">
+          <span class="news-card__tag">Access to Justice</span>
+          <h3 class="news-card__title">New Justice Centres Open in Northern Uganda</h3>
+          <p style="font-size:0.87rem">Three new centres in Gulu, Kitgum and Pader extend integrated legal services to communities most affected by past conflict.</p>
+          <p class="news-card__meta">10 March 2025</p>
+        </div>
+      </a>
+      <a href="#" class="news-card reveal">
+        <img class="news-card__img" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80&auto=format" alt="Digital">
+        <div class="news-card__body">
+          <span class="news-card__tag">E-Justice</span>
+          <h3 class="news-card__title">Electronic Filing Rolled Out to 20 New Courts</h3>
+          <p style="font-size:0.87rem">The Judiciary's e-filing system is now live in 20 additional magistrate courts as part of the JLOS digitisation drive.</p>
+          <p class="news-card__meta">22 March 2025</p>
+        </div>
+      </a>
+      <a href="#" class="news-card reveal reveal-delay-1">
+        <img class="news-card__img" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80&auto=format" alt="Meeting">
+        <div class="news-card__body">
+          <span class="news-card__tag">Press Release</span>
+          <h3 class="news-card__title">JLOS Launches Strategic Plan V Consultation Process</h3>
+          <p style="font-size:0.87rem">A nationwide stakeholder consultation has begun to develop the next five-year strategic plan for the justice sector.</p>
+          <p class="news-card__meta">5 April 2025</p>
+        </div>
+      </a>
+      <a href="#" class="news-card reveal reveal-delay-2">
+        <img class="news-card__img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&auto=format" alt="Award">
+        <div class="news-card__body">
+          <span class="news-card__tag">Recognition</span>
+          <h3 class="news-card__title">JLOS Recognition Awards Ceremony 2025</h3>
+          <p style="font-size:0.87rem">Outstanding performers from across the sector honoured at the annual JLOS Recognition Awards in Kampala.</p>
+          <p class="news-card__meta">18 April 2025</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ANNUAL REPORTS ── -->
+<section class="section section--cream" id="reports">
+  <div class="container">
+    <div class="grid-2" style="align-items:start">
+      <div>
+        <span class="eyebrow reveal">Publications</span>
+        <h2 class="section-title reveal reveal-delay-1">Annual <em class="display-italic">Reports</em></h2>
+        <div class="gold-line reveal reveal-delay-2"></div>
+        <p class="mt-2 reveal">JLOS publishes an annual performance report that documents achievements, challenges, and financial performance across the sector. Reports are freely available for download.</p>
+      </div>
+      <div class="report-list reveal">
+        <!-- REPLACE href with actual PDF links -->
+        <a href="assets/reports/jlos-annual-report-2024.pdf" class="report-item">
+          <div class="report-item__year">2024</div>
+          <div class="report-item__divider"></div>
+          <div class="report-item__info">
+            <div class="report-item__title">JLOS Annual Performance Report 2024</div>
+            <div class="report-item__meta">PDF · 8.2 MB · Released January 2025</div>
+          </div>
+          <span class="report-item__dl">Download ↓</span>
+        </a>
+        <a href="assets/reports/jlos-annual-report-2023.pdf" class="report-item">
+          <div class="report-item__year">2023</div>
+          <div class="report-item__divider"></div>
+          <div class="report-item__info">
+            <div class="report-item__title">JLOS Annual Performance Report 2023</div>
+            <div class="report-item__meta">PDF · 7.6 MB · Released February 2024</div>
+          </div>
+          <span class="report-item__dl">Download ↓</span>
+        </a>
+        <a href="assets/reports/jlos-annual-report-2022.pdf" class="report-item">
+          <div class="report-item__year">2022</div>
+          <div class="report-item__divider"></div>
+          <div class="report-item__info">
+            <div class="report-item__title">JLOS Annual Performance Report 2022</div>
+            <div class="report-item__meta">PDF · 6.9 MB · Released March 2023</div>
+          </div>
+          <span class="report-item__dl">Download ↓</span>
+        </a>
+        <a href="assets/reports/jlos-annual-report-2021.pdf" class="report-item">
+          <div class="report-item__year">2021</div>
+          <div class="report-item__divider"></div>
+          <div class="report-item__info">
+            <div class="report-item__title">JLOS Annual Performance Report 2021</div>
+            <div class="report-item__meta">PDF · 5.8 MB · Released April 2022</div>
+          </div>
+          <span class="report-item__dl">Download ↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="section section--white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="eyebrow reveal">Gallery</span>
+      <h2 class="section-title reveal reveal-delay-1">Photo <em class="display-italic">Gallery</em></h2>
+      <div class="gold-line gold-line--center reveal reveal-delay-2"></div>
+    </div>
+    <div class="gallery-grid reveal">
+      <!-- REPLACE all image srcs with your own photos -->
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&q=80&auto=format" alt="Gallery">
+        <div class="gallery-item__overlay">⊕</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80&auto=format" alt="Gallery">
+        <div class="gallery-item__overlay">⊕</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=400&q=80&auto=format" alt="Gallery">
+        <div class="gallery-item__overlay">⊕</div>
+      </div>
+      <div class="gallery-item tall">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&q=80&auto=format" alt="Gallery">
+        <div class="gallery-item__overlay">⊕</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1554774853-719586f82d77?w=400&q=80&auto=format" alt="Gallery">
+        <div class="gallery-item__overlay">⊕</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=400&q=80&auto=format" alt="Gallery">
+        <div class="gallery-item__overlay">⊕</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>

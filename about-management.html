@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Management Structures — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    .org-flow {
+      display:flex; flex-direction:column; align-items:center; gap:0;
+      position:relative; padding:1rem 0;
+    }
+    .org-node {
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:var(--white); border-radius:var(--radius-lg);
+      padding:1.25rem 2rem; text-align:center;
+      border:2px solid var(--gold); min-width:260px;
+      font-family:var(--font-body); font-weight:700; font-size:0.9rem;
+      position:relative; z-index:2;
+    }
+    .org-connector {
+      width:2px; height:36px; background:linear-gradient(var(--purple),var(--gold));
+      margin:0 auto;
+    }
+    .org-row {
+      display:flex; gap:1.5rem; justify-content:center; align-items:flex-start;
+      position:relative;
+    }
+    .org-row::before {
+      content:''; position:absolute; top:0; left:20%; right:20%; height:2px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    }
+    .org-row-item { display:flex; flex-direction:column; align-items:center; }
+    .org-row-connector { width:2px; height:24px; background:var(--gold); margin:0 auto; }
+    .org-row-node {
+      background:var(--white); border:2px solid var(--purple);
+      border-radius:var(--radius-lg); padding:0.85rem 1.25rem;
+      text-align:center; min-width:150px;
+      font-family:var(--font-body); font-weight:600; font-size:0.82rem; color:var(--purple);
+    }
+    @media(max-width:700px){
+      .org-row { flex-direction:column; align-items:center; }
+      .org-row::before { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="page-hero__media">
+    <img src="JLOSTEAM2.png" alt="Management Structures">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="about-who-we-are.html">About Us</a><span class="sep">/</span>
+      <span class="current">Management Structures</span>
+    </nav>
+    <h1>Management Structures</h1>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow reveal">Governance</span>
+      <h2 class="section-heading reveal reveal-delay-1">JLOS Committee Architecture</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2"></div>
+      <p class="mt-2 reveal" style="max-width:620px;margin-left:auto;margin-right:auto">The sector collaboration architecture is built on a committee system at both national and sub-national levels. The Secretariat is a coordination unit — we are all JLOS.</p>
+    </div>
+
+    <!-- Org chart -->
+    <div class="org-flow reveal mb-6" style="max-width:700px;margin-left:auto;margin-right:auto">
+      <div class="org-node">Leadership Committee</div>
+      <div class="org-connector"></div>
+      <div class="org-node" style="background:linear-gradient(135deg,var(--navy),var(--navy-mid))">Steering Committee</div>
+      <div class="org-connector"></div>
+      <div class="org-node" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold));border-color:var(--purple)">Technical Committee</div>
+      <div class="org-connector"></div>
+      <div class="org-row">
+        <div class="org-row-item">
+          <div class="org-row-connector"></div>
+          <div class="org-row-node">Working Groups</div>
+        </div>
+        <div class="org-row-item">
+          <div class="org-row-connector"></div>
+          <div class="org-row-node">Sub-Committees</div>
+        </div>
+        <div class="org-row-item">
+          <div class="org-row-connector"></div>
+          <div class="org-row-node">ICT Working Group</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--off-white">
+  <div class="container">
+    <div class="grid-2" style="align-items:start;gap:2rem">
+
+      <div class="reveal">
+        <div class="structure-card" style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;border-top:4px solid var(--purple)">
+          <h3 style="color:var(--purple);margin-bottom:0.75rem;font-size:1.2rem">JLOS Leadership Committee</h3>
+          <p>This is the Committee comprised of all heads of institutions, who are ultimately accountable for the delivery of JLOS services in the country. It is responsible for political leadership and guidance to the Sector and for articulating the JLOS Vision and Sector development policy.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <div class="structure-card" style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;border-top:4px solid var(--navy)">
+          <h3 style="color:var(--navy);margin-bottom:0.75rem;font-size:1.2rem">JLOS Steering Committee</h3>
+          <p>The Steering Committee is the body responsible for policy formulation, coordination, fundraising, external accountability, and quality assurance of JLOS results to the people of Uganda.</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="structure-card" style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;border-top:4px solid var(--gold)">
+          <h3 style="color:var(--gold-dark);margin-bottom:0.75rem;font-size:1.2rem">JLOS Technical Committee</h3>
+          <p>The Technical Committee comprises technical personnel from JLOS institutions, headed by departmental heads. It primarily operates through working groups and reports to the Steering Committee on sector-wide technical matters.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;border-top:4px solid var(--purple-light)">
+          <h3 style="color:var(--purple);margin-bottom:1rem;font-size:1.2rem">Working Groups</h3>
+          <p style="margin-bottom:1rem">Due to the breadth of the reform programme, working groups serve as extensions of the Technical Committee, providing in-depth consideration that would not be possible within the Technical Committee itself.</p>
+          <div class="wg-list">
+            <div class="wg-item">
+              <p><strong>1. Access to Justice — Civil</strong><br>
+              <em style="font-size:0.82rem;color:var(--ink-muted)">Sub-committees: Civil (main) · Land Justice</em></p>
+            </div>
+            <div class="wg-item">
+              <p><strong>2. Access to Justice — Criminal</strong><br>
+              <em style="font-size:0.82rem;color:var(--ink-muted)">Sub-committee: Children and Family Justice</em></p>
+            </div>
+            <div class="wg-item">
+              <p><strong>3. Human Rights and Accountability</strong></p>
+            </div>
+            <div class="wg-item">
+              <p><strong>4. Transitional Justice</strong></p>
+            </div>
+            <div class="wg-item">
+              <p><strong>5. Budget Working Group</strong></p>
+            </div>
+            <div class="wg-item">
+              <p><strong>6. Information and Communications Technology (ICT) Working Group</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sub-national -->
+    <div class="mt-6 reveal">
+      <h3 style="color:var(--purple);margin-bottom:1.25rem">Sub-national Structures</h3>
+      <div class="grid-2">
+        <div style="background:var(--purple-pale);border-radius:var(--radius-lg);padding:1.5rem;border:1px solid rgba(92,45,145,0.2)">
+          <h4 style="color:var(--purple);margin-bottom:0.5rem">Regional Chain-linked Committees (RCCs)</h4>
+          <p style="font-size:0.9rem">Regional-level coordination bodies that oversee JLOS implementation across districts within each region.</p>
+        </div>
+        <div style="background:var(--gold-pale);border-radius:var(--radius-lg);padding:1.5rem;border:1px solid rgba(201,149,42,0.2)">
+          <h4 style="color:var(--gold-dark);margin-bottom:0.5rem">District Chain-Linked Committees (DCCs)</h4>
+          <p style="font-size:0.9rem">District-level bodies coordinating delivery of JLOS services at the local level across Uganda's 146 districts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+</body>
+</html>

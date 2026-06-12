@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Institutions — JLOS Uganda</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <style>
+    body { padding-top:0; }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__media">
+    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=80" alt="Member Institutions">
+  </div>
+  <div class="page-hero__overlay"></div>
+  <div class="container page-hero__content">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="about-who-we-are.html">About Us</a>
+      <span class="sep">/</span>
+      <span class="current">Member Institutions</span>
+    </nav>
+    <h1>Member Institutions</h1>
+  </div>
+</section>
+
+<!-- INSTITUTIONS ACCORDION -->
+<section class="section section--off-white">
+  <div class="container">
+    <div class="text-center mb-6">
+      <span class="section-eyebrow reveal">JLOS Network</span>
+      <h2 class="section-heading reveal reveal-delay-1">JLOS is made up of Eighteen (18) Member Institutions</h2>
+      <div class="purple-bar purple-bar--center reveal reveal-delay-2"></div>
+    </div>
+
+    <div class="members-grid reveal" id="membersGrid">
+
+      <!-- 1 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">MOJCA</div>
+          <div class="member-card__name">Ministry of Justice and Constitutional Affairs</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Ministry is responsible for upholding the rule of law, driving forward the legal and justice system, and reforming and safeguarding the Constitution. It facilitates legal advice to Government, drafts legislation, promotes adherence to natural justice, and disseminates legal information to the public.</p>
+              <a class="member-card__link" href="http://www.justice.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">Judiciary</div>
+          <div class="member-card__name">Judiciary</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Courts of Judicature (Judiciary) comprises the Supreme Court, Court of Appeal, High Court, and Subordinate Courts including Qadhis courts. They administer justice by resolving disputes between individuals and the state, interpreting the Constitution and the Laws of Uganda, and protecting human rights.</p>
+              <a class="member-card__link" href="http://www.judiciary.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">MIA</div>
+          <div class="member-card__name">Ministry of Internal Affairs</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Ministry regulates and facilitates exit and entry of nationals, manages immigration documents and work permits, and controls movement of Ugandans and foreign nationals. Through peace-building initiatives, it grants amnesty and reintegrates reporters. The Uganda National Focal Point on Small Arms and Light Weapons (NFP) coordinates control of SALW proliferation.</p>
+              <a class="member-card__link" href="http://www.mia.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">UPF</div>
+          <div class="member-card__name">Uganda Police Force</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Uganda Police Force secures life and property in partnership with the public in a committed and professional manner to promote development. It protects individual rights, maintains security, public safety and order, and prevents and detects crime across Uganda.</p>
+              <a class="member-card__link" href="http://www.upf.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">ODPP</div>
+          <div class="member-card__name">Office of the Director of Public Prosecutions</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The ODPP provides legal advice relating to the investigation and prosecution of criminal cases. It coordinates and manages prosecution of criminal cases by examining them before registration in court and during prosecutions, ensuring quality and consistency across Uganda's criminal justice system.</p>
+              <a class="member-card__link" href="http://www.dpp.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">UPS</div>
+          <div class="member-card__name">Uganda Prisons Service</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Uganda Prisons Service ensures safe, secure and humane custody with effective rehabilitation of offenders. It administers court-imposed sentences, ensures security of offenders, protects their remaining rights in custody, and ensures they attend trial and are rehabilitated for successful reintegration.</p>
+              <a class="member-card__link" href="http://www.prisons.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">UHRC</div>
+          <div class="member-card__name">Uganda Human Rights Commission</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">Established under the 1995 Constitution, UHRC investigates human rights violations, visits jails and detention facilities, conducts research and education to enhance respect for human rights, recommends effective measures to Parliament, monitors Government compliance with international human rights treaty obligations, and publishes periodic reports.</p>
+              <a class="member-card__link" href="http://www.uhrc.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">JSC</div>
+          <div class="member-card__name">Judicial Service Commission</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Judicial Service Commission recruits competent Judicial Officers and carries out civic education targeting the general public. It also conducts research into the justice system and supervises, monitors and inspects justice dispensation across Uganda.</p>
+              <a class="member-card__link" href="http://www.jsc.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">URSB</div>
+          <div class="member-card__name">Uganda Registration Services Bureau</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">An autonomous statutory body established in 1998 to take over functions of the Registrar General's Office. URSB carries out all registrations required under relevant laws, maintains registers and records on registrations, evaluates the practicability of relevant laws, conducts research, and charges fees for services.</p>
+              <a class="member-card__link" href="http://www.ursb.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">ULRC</div>
+          <div class="member-card__name">Uganda Law Reform Commission</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Commission constantly studies and reviews Acts and other laws of Uganda with a view to making recommendations for their systematic improvement, development, modernisation through reform and revision. Its aim is to establish an up-to-date and adequate legislative environment for Uganda.</p>
+              <a class="member-card__link" href="http://www.ulrc.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">NIRA</div>
+          <div class="member-card__name">National Identification and Registration Authority</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">Mandated by the Registration of Persons Act 2015, NIRA manages national identification, alien identification, birth registration, death registration, adoption orders registration, replacement of lost/damaged IDs, change of particulars on NIDs, and confirmation of information in the national register.</p>
+              <a class="member-card__link" href="http://www.nira.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">DCIC</div>
+          <div class="member-card__name">Directorate of Citizenship and Immigration Control</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">DCIC handles all immigration and citizenship services including issuance of Ugandan Passports, Special Passes, Entry Permits (Work Permits), Dependant Passes, Pupils Passes, Certificates of Residence, granting of Citizenship, and Visas for foreign nationals.</p>
+              <a class="member-card__link" href="http://www.immigration.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">MGLSD</div>
+          <div class="member-card__name">Ministry of Gender, Labour and Social Development (Juvenile Justice)</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">Within JLOS, the Ministry focuses on juvenile justice — the protection, rehabilitation and reintegration of children and youth in conflict with the law. It oversees remand homes including Naguru and Kampiringisa, providing vocational, psychosocial and rehabilitation support to young offenders.</p>
+              <a class="member-card__link" href="http://www.mglsd.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">MoLG</div>
+          <div class="member-card__name">Ministry of Local Government (Local Council Courts)</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Ministry of Local Government oversees the Local Council Court system, which provides community-level dispute resolution across Uganda's districts. Local Council Courts handle minor civil and criminal matters at the grassroots level, serving as an accessible first point of justice for many Ugandans.</p>
+              <a class="member-card__link" href="http://www.molg.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">ULS</div>
+          <div class="member-card__name">Uganda Law Society</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Uganda Law Society represents the legal profession in Uganda, promoting the rule of law and maintaining professional standards among lawyers. It provides a voice for the legal community on matters of law and justice, and plays a key role in access to justice through legal aid and advocacy.</p>
+              <a class="member-card__link" href="http://www.ugandanlawsociety.org" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">TAT</div>
+          <div class="member-card__name">Tax Appeals Tribunal</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Tax Appeals Tribunal provides an independent forum for taxpayers to appeal against tax assessments and decisions made by the Uganda Revenue Authority. It ensures fair and impartial resolution of tax disputes, contributing to a sound legal framework for investment and commercial activity.</p>
+              <a class="member-card__link" href="http://www.tat.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">LDC</div>
+          <div class="member-card__name">Law Development Centre</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">The Law Development Centre provides legal training and continuing legal education in Uganda. It offers the Bar Course for admission to the legal profession and professional development programmes for practising lawyers, contributing to the quality and capacity of Uganda's justice sector workforce.</p>
+              <a class="member-card__link" href="http://www.ldc.ac.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 -->
+      <div class="member-card">
+        <div class="member-card__header" onclick="toggleMember(this)">
+          <div class="member-card__abbr">CADER</div>
+          <div class="member-card__name">Centre for Arbitration and Dispute Resolution</div>
+          <div class="member-card__toggle"></div>
+        </div>
+        <div class="member-card__body">
+          <div class="member-card__body-inner">
+            <div class="member-card__body-content">
+              <p class="member-card__desc">CADER promotes and administers alternative dispute resolution in Uganda, including arbitration, mediation and conciliation. It provides a cost-effective alternative to court litigation for commercial and civil disputes, contributing to a more efficient and accessible justice system for businesses and citizens.</p>
+              <a class="member-card__link" href="http://www.cader.go.ug" target="_blank">Visit Website ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+<script>
+function toggleMember(header) {
+  header.closest('.member-card').classList.toggle('open');
+}
+</script>
+</body>
+</html>
