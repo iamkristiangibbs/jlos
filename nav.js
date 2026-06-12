@@ -99,14 +99,72 @@
   <!-- Mobile Menu -->
   <div class="nav__mobile" id="mobileMenu">
     <button class="nav__mobile-close" id="mobileClose" aria-label="Close">&times;</button>
-    <a href="index.html">Home</a>
-    <a href="about-who-we-are.html">About Us</a>
-    <a href="work-criminal.html">Our Work</a>
-    <a href="strategic-plans.html">Strategic Plans</a>
-    <a href="projects.html">Projects</a>
-    <a href="annual-reports.html">Annual Reports</a>
-    <a href="media-bulletin.html">Media Centre</a>
-    <a href="contact.html">Contact Us</a>
+
+    <a href="index.html" class="nav__mobile-link">Home</a>
+
+    <div class="nav__mobile-group">
+      <div class="nav__mobile-row">
+        <a href="about-who-we-are.html" class="nav__mobile-link">About Us</a>
+        <button class="nav__mobile-toggle" aria-label="Expand">+</button>
+      </div>
+      <div class="nav__mobile-sub"><div>
+        <a href="about-who-we-are.html">Who We Are</a>
+        <a href="about-members.html">Member Institutions</a>
+        <a href="about-team.html">JLOS Secretariat Team</a>
+        <a href="about-management.html">Management Structures</a>
+        <a href="about-partners.html">Development Partners</a>
+      </div></div>
+    </div>
+
+    <div class="nav__mobile-group">
+      <div class="nav__mobile-row">
+        <a href="work-criminal.html" class="nav__mobile-link">Our Work</a>
+        <button class="nav__mobile-toggle" aria-label="Expand">+</button>
+      </div>
+      <div class="nav__mobile-sub"><div>
+        <a href="work-criminal.html">Criminal Justice</a>
+        <a href="work-civil.html">Civil Justice</a>
+        <a href="work-human-rights.html">Human Rights</a>
+        <a href="work-transitional.html">Transitional Justice</a>
+        <a href="work-accountability.html">Accountability</a>
+      </div></div>
+    </div>
+
+    <a href="strategic-plans.html" class="nav__mobile-link">Strategic Plans</a>
+
+    <div class="nav__mobile-group">
+      <div class="nav__mobile-row">
+        <a href="projects.html" class="nav__mobile-link">Projects</a>
+        <button class="nav__mobile-toggle" aria-label="Expand">+</button>
+      </div>
+      <div class="nav__mobile-sub"><div>
+        <a href="projects.html#towers">JLOS Towers</a>
+        <a href="projects.html#adc">ADC Documentation Project</a>
+        <a href="projects.html#centres">Justice Centres</a>
+        <a href="projects.html#legal-aid">Legal Aid</a>
+        <a href="projects.html#ejustice">E-Justice</a>
+        <a href="projects.html#j4c">Justice for Children</a>
+        <a href="projects.html#sgbv">SGBV Special Sessions</a>
+      </div></div>
+    </div>
+
+    <a href="annual-reports.html" class="nav__mobile-link">Annual Reports</a>
+
+    <div class="nav__mobile-group">
+      <div class="nav__mobile-row">
+        <a href="media-bulletin.html" class="nav__mobile-link">Media Centre</a>
+        <button class="nav__mobile-toggle" aria-label="Expand">+</button>
+      </div>
+      <div class="nav__mobile-sub"><div>
+        <a href="media-bulletin.html">JLOS Bulletin</a>
+        <a href="media-scholarships.html">Scholarships</a>
+        <a href="media-events.html">Conferences &amp; Events</a>
+        <a href="media-gallery.html">Gallery</a>
+        <a href="media-awards.html">JLOS Recognition Awards</a>
+      </div></div>
+    </div>
+
+    <a href="contact.html" class="nav__mobile-link">Contact Us</a>
   </div>`;
 
   /* ── FOOTER ── */
@@ -181,12 +239,21 @@
     if (a.getAttribute('href') === page) a.classList.add('active');
   });
 
-  /* ── Mobile menu ── */
+  /* ── Mobile menu open/close ── */
   document.getElementById('navToggle').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.add('open');
   });
   document.getElementById('mobileClose').addEventListener('click', () => {
     document.getElementById('mobileMenu').classList.remove('open');
+  });
+
+  /* ── Mobile sub-menu toggles ── */
+  document.querySelectorAll('.nav__mobile-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.nav__mobile-group');
+      const isOpen = group.classList.toggle('open');
+      btn.textContent = isOpen ? '−' : '+';
+    });
   });
 
   /* ── Back to top ── */
