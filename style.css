@@ -9,7 +9,8 @@
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+body { overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -660,13 +661,23 @@ p  { font-family: var(--font-body); font-size:1rem; line-height:1.75; color: var
    ================================================================ */
 @media(max-width:640px){
 
+  /* Prevent any element from blowing out horizontal layout */
+  .news-ticker, .partners-track-wrap, .partners-section,
+  .hero, .stat-bar, .section, .footer { max-width:100vw; }
+
   /* Hero */
   .hero { min-height:100svh; }
-  .hero__subtitle { font-size:0.95rem; }
+  h1 { font-size:clamp(1.5rem,7vw,2rem); }
+  .hero__title { font-size:clamp(1.5rem,7vw,2rem); }
+  .hero__subtitle { font-size:0.9rem; max-width:100%; }
   .hero__scroll-cue { display:none; }
 
   /* News ticker */
   .ticker-label { display:none; }
+  .ticker-track { gap:2rem; font-size:0.78rem; }
+
+  /* Nav logo — shrink on very small screens */
+  .nav__logo-img { height:52px; }
 
   /* Stat bar */
   .stat-bar__grid { grid-template-columns:repeat(2,1fr); gap:1.25rem; }
